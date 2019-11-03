@@ -17,6 +17,12 @@
       </ul>
     </li> 
 
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Pharmacists</span> <span class="   label label-important"></span></a>
+      <ul>
+        <li><a href="{{url('/admin/pharmacists/view-prescription')}}">View Prescription</a></li>
+      </ul>
+    </li> 
+
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Nurses</span> <span class="   label label-important"></span></a>
       <ul>
         <li><a href="{{url('/admin/patient/add_patient')}}">Add Patient Info</a></li>

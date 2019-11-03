@@ -36,6 +36,7 @@ Route::get('/admin/patient/view_patient','PatientController@viewPatient');
 //view patient records
 Route::get('/admin/patient/view-patients','DoctorController@viewPatient');
 Route::match(['get','post'],'/admin/add_lab/{id}','DoctorController@labTests');
+Route::match(['get','post'],'/admin/add_prescription/{id}','DoctorController@addPrescription');
 Route::get('/admin/doctors/view-labtests','DoctorController@viewLabTests');
 Route::get('/admin/doctors/view-labresults','DoctorController@viewLabResults');
 
@@ -44,12 +45,8 @@ Route::get('/admin/labtechs/view-labtests','LabTechController@viewLabTests');
 Route::match(['get','post'],'/admin/add_results/{id}','LabTechController@addLabResults');
 Route::get('/admin/labtechs/view-labresults','LabTechController@viewLabResults');
 
-
-//Symptoms Routes (Admin)
-Route::match(['get','post'],'/admin/symptoms/add_symptom','SymptomController@addSymptom');
-Route::match(['get','post'],'/admin/edit_symptom/{id}','SymptomController@editSymptom');
-Route::match(['get','post'],'/admin/delete_symptom/{id}','SymptomController@deleteSymptom');
-Route::get('/admin/symptoms/view_symptoms','SymptomController@viewSymtpoms');
+//pharmacists route
+Route::get('/admin/pharmacists/view-prescription','PharmacistController@viewPrescription');
 
 
 Route::get('/logout', 'AdminController@logout');

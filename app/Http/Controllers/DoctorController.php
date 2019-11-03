@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\LabTest;
 use App\LabResult;
 use App\Patient;
-use Illuminate\Support\Facades\Input;
+use App\Prescription;
 
 class DoctorController extends Controller
 {
@@ -49,5 +49,25 @@ class DoctorController extends Controller
         $getLabResults = json_decode(json_encode($getLabResults));
         //dd($getLabResults);
         return view('admin/doctors/view-labresults')->with(compact('getLabResults'));
+    }
+    public function addPrescription(Request $request, $id = null){
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            //dd($data);
+
+            $prescibe = new Prescription;
+            $prescibe->patients_id = $data['patient_id'];
+            $prescibe->lab_tests_id = $data['labtest_id'];
+            $prescibe->lab_results_id = $data['labresults_id'];
+            $prescibe->prescription = $data['prescription'];
+            //dd($prescibe);
+            $prescibe->save();
+            return redirect('/admin/doctors/view-labresults')->with('flash_message_success','Prescription Added SUccessfully');
+        }
+
+        $getInfo = LabResult::with('patient','labtest')->where(['id'=>$id])->first();
+        //dd($getInfo);
+
+        return view('admin/doctors/prescription')->with(compact('getInfo'));
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LabResult extends Model
 {
     protected $fillable = [
-    	'patients_id','description', 'image',
+    	'patients_id','lab_tests_id','description', 'image',
     ];
 
     public function patient(){

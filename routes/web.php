@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //admin login route
-Route::match(['get', 'post'],'/admin', 'AdminController@login');
+// Route::match(['get', 'post'],'/admin', 'AdminController@login');
 //Admin Routes
 Route::get('/admin/dashboard', 'AdminController@dashboard');
 Route::get('/admin/settings','AdminController@settings');
@@ -50,3 +50,8 @@ Route::get('/admin/pharmacists/view-prescription','PharmacistController@viewPres
 
 
 Route::get('/logout', 'AdminController@logout');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
